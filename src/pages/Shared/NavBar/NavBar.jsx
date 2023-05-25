@@ -1,13 +1,46 @@
 /** @format */
 
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { authContext } from "../../../Providers/AuthProvider";
 
 const NavBar = () => {
+  const { user, logOutUser } = useContext(authContext);
+
+  const handleLogOut = () => {
+    logOutUser()
+      .then(() =>
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Log out successful",
+          showConfirmButton: false,
+          timer: 1500,
+        })
+      )
+      .catch((error) => console.log(error.message));
+  };
+
   const navOptions = (
     <>
       <Link to="/">Home</Link>
       <Link to="/menu">Our Menu</Link>
       <Link to="/order/salad">Order Food</Link>
+      {user ? (
+        <>
+          <div className="avatar backdrop-blur-sm">
+            <div className="w-12 rounded-full">
+              <img src={user?.photoURL} />
+            </div>
+          </div>
+          <button onClick={handleLogOut} className="btn btn-xs">
+            Log Out
+          </button>
+        </>
+      ) : (
+        <Link to="/login">Login</Link>
+      )}
     </>
   );
 
@@ -42,7 +75,9 @@ const NavBar = () => {
           <a className="btn btn-ghost normal-case text-xl">Bistro Boss</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu gap-6 menu-horizontal px-1">{navOptions}</ul>
+          <ul className="menu gap-6 items-center menu-horizontal px-1">
+            {navOptions}
+          </ul>
         </div>
         <div className="navbar-end">
           <a className="btn">Get started</a>
