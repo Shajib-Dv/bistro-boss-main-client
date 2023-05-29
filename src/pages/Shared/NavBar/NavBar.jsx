@@ -3,10 +3,14 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { FaCartPlus, FaSignOutAlt } from "react-icons/fa";
 import { authContext } from "../../../Providers/AuthProvider";
+import useCart from "../../../hooks/useCart";
 
 const NavBar = () => {
   const { user, logOutUser } = useContext(authContext);
+
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOutUser()
@@ -34,13 +38,19 @@ const NavBar = () => {
               <img src={user?.photoURL} />
             </div>
           </div>
-          <button onClick={handleLogOut} className="btn btn-xs">
-            Log Out
+          <button onClick={handleLogOut} className="text-3xl" title="Log Out">
+            <FaSignOutAlt />
           </button>
         </>
       ) : (
-        <Link to="/login">Login</Link>
+        <Link to="/login">Log in</Link>
       )}
+      <div className="indicator">
+        <span className="indicator-item badge badge-secondary">
+          +{cart?.length || 0}
+        </span>
+        <FaCartPlus className="text-3xl mx-4" />
+      </div>
     </>
   );
 

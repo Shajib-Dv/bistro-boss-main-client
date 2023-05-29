@@ -15,7 +15,7 @@ import { authContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
   const captchaRef = useRef(null);
-  const [disableLogIn, setDisableLogIn] = useState(true);
+  const [disableLogIn, setDisableLogIn] = useState(false); //TODO: make disable true
   const { signInUser } = useContext(authContext);
   const location = useLocation();
   const navigate = useNavigate();
