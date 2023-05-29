@@ -42,9 +42,9 @@ const MyCart = () => {
         <title>Bistro Boss || my cart</title>
       </Helmet>
       <div>
-        <div className="flex items-center justify-evenly uppercase">
-          <h3 className="text-3xl">Total Items: {cart?.length}</h3>
-          <h3 className="text-3xl">Total Price: ${totalPrice}</h3>
+        <div className="flex items-center flex-col md:flex-row justify-evenly uppercase">
+          <h3 className="md:text-3xl">Total Items: {cart?.length}</h3>
+          <h3 className="md:text-3xl">Total Price: ${totalPrice}</h3>
           <button className="btn btn-warning btn-sm">Pay</button>
         </div>
         <div className="overflow-x-auto w-full my-10">

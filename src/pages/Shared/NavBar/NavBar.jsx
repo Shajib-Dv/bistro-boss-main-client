@@ -33,7 +33,7 @@ const NavBar = () => {
       <Link to="/order/salad">Order Food</Link>
       {user ? (
         <>
-          <div className="avatar backdrop-blur-sm">
+          <div className="avatar backdrop-blur-sm w-12">
             <div className="w-12 rounded-full">
               <img src={user?.photoURL} />
             </div>
@@ -79,7 +79,7 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 gap-4 rounded-box w-52"
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[rgb(0,0,0,0.5)] w-screen gap-4 rounded-box "
             >
               {navOptions}
             </ul>

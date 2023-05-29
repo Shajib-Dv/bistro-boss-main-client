@@ -10,6 +10,7 @@ import {
   FaHamburger,
   FaShoppingBag,
   FaEnvelope,
+  FaBookOpen,
 } from "react-icons/fa";
 
 const DashBord = () => {
@@ -21,9 +22,9 @@ const DashBord = () => {
           <Outlet />
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="flex gap-2 fixed top-2 text-[#D29F55] items-center drawer-button lg:hidden"
           >
-            Open drawer
+            <FaBookOpen className="text-2xl" /> Open Dashboard
           </label>
         </div>
         <div className="drawer-side">
