@@ -8,6 +8,8 @@ import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import DashBord from "../Layout/DashBord";
+import MyCart from "../pages/DashBord/MyCart";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +31,16 @@ export const router = createBrowserRouter([
             <Order />
           </PrivateRoute>
         ),
+      },
+    ],
+  },
+  {
+    path: "/dashbord",
+    element: <DashBord />,
+    children: [
+      {
+        path: "mycart",
+        element: <MyCart />,
       },
     ],
   },

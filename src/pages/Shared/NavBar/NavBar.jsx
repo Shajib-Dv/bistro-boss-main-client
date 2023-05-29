@@ -45,12 +45,14 @@ const NavBar = () => {
       ) : (
         <Link to="/login">Log in</Link>
       )}
-      <div className="indicator">
-        <span className="indicator-item badge badge-secondary">
-          +{cart?.length || 0}
-        </span>
-        <FaCartPlus className="text-3xl mx-4" />
-      </div>
+      <Link to="dashbord/mycart">
+        <div className="indicator">
+          <span className="indicator-item badge badge-secondary">
+            +{cart?.length || 0}
+          </span>
+          <FaCartPlus className="text-3xl mx-4" />
+        </div>
+      </Link>
     </>
   );
 
