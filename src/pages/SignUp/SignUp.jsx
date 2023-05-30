@@ -6,11 +6,12 @@ import SignUpLotte from "/public/signUpLotte.json";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { authContext } from "../../Providers/AuthProvider";
-import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet-async";
+import SocialLogIn from "../SocialLogIn";
+import saveUserToDB from "../../utils/saveUserToDB";
 
 const SignUp = () => {
-  const { signUpUser } = useContext(authContext);
+  const { signUpUser, updateUserProfile } = useContext(authContext);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -26,16 +27,24 @@ const SignUp = () => {
 
     signUpUser(email, password)
       .then((result) => {
+        updateUserProfile(name, photo)
+          .then(() => {
+            const storeUser = {
+              name,
+              email,
+              photo,
+              password,
+            };
+            saveUserToDB(storeUser);
+          })
+          .catch((error) => console.log(error));
+
         Swal.fire({
           position: "center",
           icon: "success",
           title: "Successfully sign up",
           showConfirmButton: false,
           timer: 1500,
-        });
-        updateProfile(result.user, {
-          displayName: name,
-          photoURL: photo,
         });
         form.reset();
         navigate(from);
@@ -117,6 +126,7 @@ const SignUp = () => {
                 />
               </div>
             </form>
+            <SocialLogIn />
           </div>
         </div>
       </div>

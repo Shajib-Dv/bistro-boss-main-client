@@ -43,19 +43,20 @@ const FoodCard = ({ item }) => {
         })
         .catch((error) => console.log(error));
     }
-
-    Swal.fire({
-      title: "Please log in for add to cart",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Log in",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate("/login", { state: { from: location } });
-      }
-    });
+    if (!user) {
+      Swal.fire({
+        title: "Please log in for add to cart",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Log in",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/login", { state: { from: location } });
+        }
+      });
+    }
   };
 
   return (

@@ -5,9 +5,19 @@ import useCart from "../../hooks/useCart";
 import { Helmet } from "react-helmet-async";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { authContext } from "../../Providers/AuthProvider";
 
 const MyCart = () => {
+  const { logOutUser } = useContext(authContext);
   const [cart, reFetch] = useCart();
+
+  if (cart.error) {
+    logOutUser();
+    return <Navigate to="/" />;
+  }
+
   const totalPrice = cart?.reduce((sum, item) => item.price + sum, 0);
 
   const handleDeleteItem = (id) => {

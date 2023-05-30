@@ -11,9 +11,62 @@ import {
   FaShoppingBag,
   FaEnvelope,
   FaBookOpen,
+  FaUtensils,
+  FaMagic,
+  FaBook,
+  FaUsers,
 } from "react-icons/fa";
 
 const DashBord = () => {
+  // TODO: Load data from database to make it dynamic
+  const isAdmin = true;
+
+  const AdminList = () => (
+    <>
+      <Link to="" className="flex items-center gap-3">
+        <FaHome />
+        Admin Home
+      </Link>
+      <Link to="" className="flex items-center gap-3">
+        <FaUtensils />
+        Add Items
+      </Link>
+      <Link to="" className="flex items-center gap-3">
+        <FaMagic />
+        Manage Items
+      </Link>
+      <Link to="" className="flex items-center gap-3">
+        <FaBook />
+        Manage Bookings
+      </Link>
+      <Link to="allUsers" className="flex items-center gap-3">
+        <FaUsers />
+        Manage Users
+      </Link>
+    </>
+  );
+
+  const CommonUserList = () => (
+    <>
+      <Link to="" className="flex items-center gap-3">
+        <FaHome />
+        User Home
+      </Link>
+      <Link to="" className="flex items-center gap-3">
+        <FaCalendarAlt />
+        Reservations
+      </Link>
+      <Link to="" className="flex items-center gap-3">
+        <FaWallet />
+        Payment History
+      </Link>
+      <Link to="/dashbord/mycart" className="flex items-center gap-3">
+        <FaShoppingCart />
+        My Cart
+      </Link>
+    </>
+  );
+
   return (
     <>
       <div className="drawer drawer-mobile">
@@ -33,22 +86,7 @@ const DashBord = () => {
             <div className="text-2xl text-black text-center">
               BISTRO-BOSS Restaurant
             </div>
-            <Link to="" className="flex items-center gap-3">
-              <FaHome />
-              User Home
-            </Link>
-            <Link to="" className="flex items-center gap-3">
-              <FaCalendarAlt />
-              Reservations
-            </Link>
-            <Link to="" className="flex items-center gap-3">
-              <FaWallet />
-              Payment History
-            </Link>
-            <Link to="/dashbord/mycart" className="flex items-center gap-3">
-              <FaShoppingCart />
-              My Cart
-            </Link>
+            {isAdmin ? <AdminList /> : <CommonUserList />}
             <hr className="border-black" />
             <Link to="/" className="flex items-center gap-3">
               <FaHome />

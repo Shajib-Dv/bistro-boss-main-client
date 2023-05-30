@@ -12,6 +12,7 @@ import {
 } from "react-simple-captcha";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../Providers/AuthProvider";
+import SocialLogIn from "../SocialLogIn";
 
 const Login = () => {
   const captchaRef = useRef(null);
@@ -78,7 +79,7 @@ const Login = () => {
             </div>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form onSubmit={handleLogIn} className="card-body">
+            <form onSubmit={handleLogIn} className="card-body pb-0">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -123,7 +124,7 @@ const Login = () => {
                   Verify
                 </button>
               </div>
-              <div className="form-control mt-6">
+              <div className="form-control mt-2">
                 <input
                   disabled={disableLogIn}
                   className="btn btn-primary"
@@ -131,13 +132,14 @@ const Login = () => {
                   value="Login"
                 />
               </div>
+              <p className="pb-4 text-center font-semibold">
+                New Here ! Please{" "}
+                <Link to="/signup" className="btn-link">
+                  Sign up
+                </Link>
+              </p>
             </form>
-            <p className="pb-4 text-center font-semibold">
-              New Here ! Please{" "}
-              <Link to="/signup" className="btn-link">
-                Sign up
-              </Link>
-            </p>
+            <SocialLogIn />
           </div>
         </div>
       </div>
