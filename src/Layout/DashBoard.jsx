@@ -16,10 +16,10 @@ import {
   FaBook,
   FaUsers,
 } from "react-icons/fa";
+import useAdmin from "../hooks/useAdmin";
 
-const DashBord = () => {
-  // TODO: Load data from database to make it dynamic
-  const isAdmin = true;
+const DashBoard = () => {
+  const [isAdmin] = useAdmin();
 
   const AdminList = () => (
     <>
@@ -27,7 +27,7 @@ const DashBord = () => {
         <FaHome />
         Admin Home
       </Link>
-      <Link to="" className="flex items-center gap-3">
+      <Link to="/dashboard/addItem" className="flex items-center gap-3">
         <FaUtensils />
         Add Items
       </Link>
@@ -60,7 +60,7 @@ const DashBord = () => {
         <FaWallet />
         Payment History
       </Link>
-      <Link to="/dashbord/mycart" className="flex items-center gap-3">
+      <Link to="/dashboard/mycart" className="flex items-center gap-3">
         <FaShoppingCart />
         My Cart
       </Link>
@@ -111,4 +111,4 @@ const DashBord = () => {
   );
 };
 
-export default DashBord;
+export default DashBoard;

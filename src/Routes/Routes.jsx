@@ -8,9 +8,11 @@ import Order from "../pages/Order/Order/Order";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
-import DashBord from "../Layout/DashBord";
+import DashBoard from "../Layout/DashBoard";
+import AddItems from "../pages/DashBord/Admin/AddItems";
 import MyCart from "../pages/DashBord/MyCart";
-import AllUsers from "../pages/DashBord/Admin/AllUsers";
+import AllUsers from "../pages/dashbord/Admin/AllUsers";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -32,20 +34,32 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashbord",
+    path: "/dashboard",
     element: (
       <PrivateRoute>
-        <DashBord />
+        <DashBoard />
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "/dashboard/addItem",
+        element: (
+          <AdminRoute>
+            <AddItems />
+          </AdminRoute>
+        ),
+      },
       {
         path: "mycart",
         element: <MyCart />,
       },
       {
         path: "allUsers",
-        element: <AllUsers />,
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
       },
     ],
   },

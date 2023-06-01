@@ -45,7 +45,7 @@ const NavBar = () => {
       ) : (
         <Link to="/login">Log in</Link>
       )}
-      <Link to="dashbord/mycart">
+      <Link to="dashboard">
         <div className="indicator">
           <span className="indicator-item badge badge-secondary">
             +{cart?.length || 0}
