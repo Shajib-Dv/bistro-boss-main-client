@@ -31,7 +31,7 @@ const DashBoard = () => {
         <FaUtensils />
         Add Items
       </Link>
-      <Link to="" className="flex items-center gap-3">
+      <Link to="/dashboard/manageItems" className="flex items-center gap-3">
         <FaMagic />
         Manage Items
       </Link>

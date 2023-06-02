@@ -12,7 +12,7 @@ const useAdmin = () => {
   const allUsers = getAllUsers();
 
   const { data: isAdmin, isLoading: isAdminLoading } = useQuery({
-    queryKey: ["isAdmin", allUsers?.email],
+    queryKey: ["isAdmin", user?.email],
     enabled: !loading,
     queryFn: async () => {
       if (allUsers?.role === "admin") {

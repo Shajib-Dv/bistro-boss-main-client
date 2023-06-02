@@ -5,13 +5,13 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 import axios from "axios";
 
+const axiosSecure = axios.create({
+  baseURL: "http://localhost:5000",
+});
+
 const useAxiosSecure = () => {
   const { logOutUser } = useAuth();
   const navigate = useNavigate();
-
-  const axiosSecure = axios.create({
-    baseURL: "http://localhost:5000",
-  });
 
   useEffect(() => {
     const token = localStorage.getItem("access-token");
@@ -36,7 +36,7 @@ const useAxiosSecure = () => {
         return Promise.reject(error);
       }
     );
-  }, [logOutUser, navigate, axiosSecure]);
+  }, [logOutUser, navigate]);
 
   return [axiosSecure];
 };
