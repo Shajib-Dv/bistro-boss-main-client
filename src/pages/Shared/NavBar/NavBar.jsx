@@ -1,15 +1,15 @@
 /** @format */
 
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { FaCartPlus, FaSignOutAlt } from "react-icons/fa";
-import { authContext } from "../../../Providers/AuthProvider";
 import useCart from "../../../hooks/useCart";
+import useAuth from "../../../hooks/useAuth";
+import useAdmin from "../../../hooks/useAdmin";
 
 const NavBar = () => {
-  const { user, logOutUser } = useContext(authContext);
-
+  const { user, logOutUser } = useAuth();
+  const [isAdmin] = useAdmin();
   const [cart] = useCart();
 
   const handleLogOut = () => {
@@ -53,6 +53,11 @@ const NavBar = () => {
           <FaCartPlus className="text-3xl mx-4" />
         </div>
       </Link>
+      {isAdmin ? (
+        <Link to="/dashboard/adminhome">Dashboard</Link>
+      ) : (
+        <Link to="/dashboard/userhome">Dashboard</Link>
+      )}
     </>
   );
 

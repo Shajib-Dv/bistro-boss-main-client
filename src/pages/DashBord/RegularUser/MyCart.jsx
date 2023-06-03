@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import useCart from "../../hooks/useCart";
+import useCart from "../../../hooks/useCart";
 import { Helmet } from "react-helmet-async";
 import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -45,7 +45,7 @@ const MyCart = () => {
       <div>
         <div className="flex items-center flex-col md:flex-row justify-evenly uppercase">
           <h3 className="md:text-3xl">Total Items: {cart?.length}</h3>
-          <h3 className="md:text-3xl">Total Price: ${totalPrice}</h3>
+          <h3 className="md:text-3xl">Total Price: ${totalPrice.toFixed(2)}</h3>
           <button className="btn btn-warning btn-sm">
             <Link to="/dashboard/payment">Pay</Link>
           </button>

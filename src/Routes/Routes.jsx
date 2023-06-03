@@ -10,11 +10,13 @@ import SignUp from "../pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashBoard from "../Layout/DashBoard";
 import AddItems from "../pages/DashBord/Admin/AddItems";
-import MyCart from "../pages/DashBord/MyCart";
+import MyCart from "../pages/DashBord/RegularUser/MyCart";
 import AllUsers from "../pages/dashbord/Admin/AllUsers";
 import AdminRoute from "./AdminRoute";
 import ManageItems from "../pages/DashBord/Admin/ManageItems";
 import Payment from "../pages/DashBord/Payment/Payment";
+import UserHome from "../pages/DashBord/RegularUser/UserHome";
+import AdminHome from "../pages/DashBord/Admin/AdminHome";
 
 export const router = createBrowserRouter([
   {
@@ -68,9 +70,19 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: "/dashboard/adminhome",
+        element: (
+          <AdminRoute>
+            <AdminHome />
+          </AdminRoute>
+        ),
+      },
+      //regular user route
+      {
         path: "mycart",
         element: <MyCart />,
       },
+      { path: "/dashboard/userhome", element: <UserHome /> },
       {
         path: "/dashboard/payment",
         element: (

@@ -17,13 +17,15 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import useAdmin from "../hooks/useAdmin";
+import useCart from "../hooks/useCart";
 
 const DashBoard = () => {
   const [isAdmin] = useAdmin();
+  const [cart] = useCart();
 
   const AdminList = () => (
     <>
-      <Link to="" className="flex items-center gap-3">
+      <Link to="/dashboard/adminhome" className="flex items-center gap-3">
         <FaHome />
         Admin Home
       </Link>
@@ -48,7 +50,7 @@ const DashBoard = () => {
 
   const CommonUserList = () => (
     <>
-      <Link to="" className="flex items-center gap-3">
+      <Link to="/dashboard/userhome" className="flex items-center gap-3">
         <FaHome />
         User Home
       </Link>
@@ -61,7 +63,12 @@ const DashBoard = () => {
         Payment History
       </Link>
       <Link to="/dashboard/mycart" className="flex items-center gap-3">
-        <FaShoppingCart />
+        <div className="indicator">
+          <span className="indicator-item badge  badge-secondary">
+            +{cart?.length || 0}
+          </span>
+          <FaShoppingCart className="text-2xl mr-4" />
+        </div>
         My Cart
       </Link>
     </>
